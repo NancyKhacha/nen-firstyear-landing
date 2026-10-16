@@ -11,9 +11,16 @@
 <meta property="og:description" content="Первый год с малышом без паники, форумов и советов из 1998 года. 12 уроков от первых дней дома до первого дня рождения.">
 <meta property="og:image" content="https://n-e-n.ru/firstyear/images/tild3961-6463-4962-b232-386563383636__2_1.jpg">
 <meta property="og:url" content="https://n-e-n.ru/firstyear/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style id="nen-fonts">
+@font-face{font-family:"Unbounded";src:url("images/nen-unbounded-16c5fd1df919.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Golos Text";src:url("images/nen-golostext-5fa3dcee3273.woff2") format("woff2");font-weight:100 900;font-display:swap}
+</style>
+<script>
+if(location.hostname==='n-e-n.ru'){
+  var nenFonts=document.getElementById('nen-fonts');
+  nenFonts.textContent=nenFonts.textContent.replace(/url\("images\//g,'url("/school/images/');
+}
+</script>
 <style>
   /* ───────────── Токены: те же, что у страницы Школы НЭН и лендингов /perestan/, /podrostok/landing/ ─────────────
      Цвета из брендбука Figma «NEN products». Голубой #C5E3FF — цвет курса «Первый год»
@@ -28,6 +35,7 @@
     --nen-pink-50:#fff6f8;
     --nen-sky-200:#c5e3ff;      /* голубой курса «Первый год» */
     --nen-orange-500:#fb6326;
+    --nen-orange-600:#cc3d04;
     --nen-pink-700:#903750;     /* бордо: акцент в заголовке и цифры, 7,4:1 на белом */
     --nen-white:#fff;
     --muted:#5d628c;            /* blue-900 на 72% поверх pink-50: подписи */
@@ -81,15 +89,15 @@
   /* ───────────── Кнопки ───────────── */
   .btn{
     display:inline-flex;align-items:center;justify-content:center;
-    /* Белый на оранжевом #FB6326, как в логотипе Школы НЭН. Контраст 3:1, поэтому подпись жирная и с тенью. */
-    background:var(--nen-orange-500);color:var(--nen-white);text-shadow:0 1px 2px rgba(120,40,0,.28);
+    /* Белый на более темном оранжевом: контраст 4,96:1 для небольших подписей. */
+    background:var(--nen-orange-600);color:var(--nen-white);text-shadow:0 1px 2px rgba(120,40,0,.28);
     box-shadow:0 6px 18px rgba(251,99,38,.32);
     font-family:var(--display);font-weight:700;font-size:var(--fs-sm);line-height:1.4;
     text-decoration:none;text-align:center;white-space:nowrap;
     padding:19px 44px 17px;border:0;border-radius:var(--radius-pill);cursor:pointer;
     transition:transform .3s cubic-bezier(.16,1,.3,1),filter .2s;
   }
-  .btn:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 10px 24px rgba(251,99,38,.42)}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 10px 24px rgba(251,99,38,.42)}
   .btn:active{transform:translateY(0)}
   .btn:focus-visible{outline:3px solid var(--nen-blue-500);outline-offset:3px}
   /* Кнопка второго уровня: та же форма, без заливки */
@@ -101,7 +109,7 @@
   /* Бонус Балансити */
   /* Бонус Балансити: фиолетово-синий из логотипа Школы НЭН (#6684FF), чтобы бросался в глаза.
      Белый на нем дает 3,4:1, поэтому текст полужирный. */
-  .bonus{font-size:15px;font-weight:600;line-height:1.5;padding:14px 18px;border-radius:var(--radius);background:var(--nen-blue-500);color:var(--nen-white);box-shadow:0 6px 18px rgba(102,131,255,.28)}
+  .bonus{font-size:15px;font-weight:600;line-height:1.5;padding:14px 18px;border-radius:var(--radius);background:var(--nen-blue-700);color:var(--nen-white);box-shadow:0 6px 18px rgba(102,131,255,.28)}
   .bonus b{display:inline-block;margin-right:6px;padding:2px 9px 1px;border-radius:999px;background:var(--nen-white);color:var(--nen-blue-700);font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.03em;text-transform:uppercase;vertical-align:1px}
   .bonus a{color:var(--nen-white);text-decoration-thickness:1.5px;text-underline-offset:3px}
 
@@ -251,7 +259,7 @@
   .sticky-cta.show{transform:translate(-50%,0);visibility:visible;transition:transform .4s cubic-bezier(.16,1,.3,1),visibility 0s}
   .sticky-cta .txt{display:flex;flex-direction:column;gap:2px;min-width:0}
   .sticky-cta .line{font-family:var(--display);font-weight:500;line-height:1.4}
-  .sticky-cta .name{font-size:var(--fs-sm);color:var(--nen-blue-200)}
+  .sticky-cta .name{font-size:var(--fs-sm);color:var(--nen-blue-50)}
   .sticky-cta .mob{display:none}
   .sticky-cta .btn{flex:none;padding:16px 36px 14px}
 
@@ -310,7 +318,7 @@
     .sticky-cta{width:100%;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px)) 18px;gap:12px}
     .sticky-cta .desk,.sticky-cta .name{display:none}
     .sticky-cta .line{font-family:var(--text);font-weight:600;font-size:13px;line-height:1.3}
-    .sticky-cta .mob{display:inline;white-space:nowrap}
+    .sticky-cta .mob{display:inline;white-space:normal}
     .sticky-cta .btn{padding:14px 14px 12px;font-size:13px}
   }
   @media (max-width:360px){
@@ -324,10 +332,11 @@
     .btn,.sticky-cta,.sticky-cta.show,.faq-list summary .plus{transition:none}
   }
 </style>
+<link rel="icon" href="https://n-e-n.ru/img/favicons/favicon.svg" type="image/svg+xml"><link rel="icon" href="https://n-e-n.ru/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="https://n-e-n.ru/img/favicons/apple-touch-icon.png">
 </head>
 <body>
 
-<header class="site-header">
+<header class="site-header" id="hdr">
   <div class="wrap inner">
     <a class="logo" href="https://n-e-n.ru/school/" aria-label="Школа НЭН">
       <img src="images/logo-school.svg" alt="Школа НЭН" width="200" height="41">
@@ -578,7 +587,7 @@
 
 <aside class="sticky-cta" id="stickyCta" aria-label="Купить курс" hidden>
   <div class="txt">
-    <p class="line"><span class="desk">Первый год с&nbsp;малышом без&nbsp;паники и&nbsp;советов из&nbsp;1998&nbsp;года</span><span class="mob">Первый год с&nbsp;малышом<br>без&nbsp;паники</span></p>
+    <p class="line"><span class="desk">Первый год с&nbsp;малышом без&nbsp;паники и&nbsp;советов из&nbsp;1998&nbsp;года</span><span class="mob">Первый год с малышом<br>без паники</span></p>
     <p class="name">12&nbsp;уроков, видео экспертов, доступ навсегда</p>
   </div>
   <a class="btn" href="https://n-e-n.ru/course/firstyear/enroll">Купить за&nbsp;4&nbsp;500&nbsp;₽</a>
@@ -589,7 +598,7 @@
     <div class="foot-grid">
       <div>
         <a class="logo" href="https://n-e-n.ru/" aria-label="«Нет, это нормально»">
-          <img src="https://n-e-n.ru/img/nen_logo_v3.svg" alt="НЭН — Нет, это нормально" width="112" height="32" loading="lazy">
+          <img src="images/logo-footer.svg" alt="НЭН — Нет, это нормально" width="112" height="32" loading="lazy">
         </a>
         <div class="socials">
           <a href="https://t.me/net_etonorm" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212-.07-.062-.174-.041-.249-.024-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
@@ -644,6 +653,35 @@
 <!-- Метрика: общий счетчик сайта (41151484) + счетчик Школы (110396040) и цели старой страницы:
      buy_click — /enroll, gift_click — /gift, hub_course_click — переход на другой курс.
      Включается только на n-e-n.ru. Ссылки абсолютные, поэтому сравниваем путь ссылки. -->
-<script>if(/(^|\.)n-e-n\.ru$/.test(location.hostname)){(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(41151484,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});ym(110396040,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});window.schTrack=function(g){try{window.ym&&ym(110396040,"reachGoal",g)}catch(e){}};var hub=["/school/kurs1","/school/kurs1/","/firstyear/","/perestan/","/podrostok/landing/"];document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||!/(^|\.)n-e-n\.ru$/.test(a.hostname))return;var p=a.pathname;if(p.indexOf("/enroll")>-1){schTrack("buy_click")}else if(p.indexOf("/gift")>-1){schTrack("gift_click")}else if(hub.indexOf(p)>-1){schTrack("hub_course_click")}},true);}</script>
+<script>if(/(^|\.)n-e-n\.ru$/.test(location.hostname)){(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(41151484,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});ym(110396040,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});window.schTrack=function(g,d){d=d||{};window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:g,course:"firstyear"},d));try{window.ym&&ym(110396040,"reachGoal",g,d)}catch(e){}};var hub=["/school/kurs1","/school/kurs1/","/firstyear/","/perestan/","/podrostok/landing/"];document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||!/(^|\.)n-e-n\.ru$/.test(a.hostname))return;var p=a.pathname;if(p.indexOf("/enroll")>-1){schTrack("buy_click",{placement:a.id==="heroBuy"?"hero":a.id==="priceBuy"?"price":a.closest("#stickyCta")?"sticky":a.closest(".hero")?"hero":a.closest(".pricing")?"price":"faq"})}else if(p.indexOf("/gift")>-1){schTrack("gift_click",{placement:a.id==="heroBuy"?"hero":a.id==="priceBuy"?"price":a.closest("#stickyCta")?"sticky":a.closest(".hero")?"hero":a.closest(".pricing")?"price":"faq"})}else if(hub.indexOf(p)>-1){schTrack("hub_course_click")}},true);}</script>
+<script>
+(function(){
+  var incoming=new URLSearchParams(location.search);
+  var allowed=/^(utm_(source|medium|campaign|content|term)|yclid|gclid|vk_click_id|promo)$/;
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var u=new URL(a.href);
+    if(u.hostname!=='n-e-n.ru')return;
+    if(!/^\/course\/[^/]+\/(enroll|gift)\/?$/.test(u.pathname)&&['/school/kurs1','/firstyear/','/perestan/','/podrostok/landing/','/school/'].indexOf(u.pathname)<0)return;
+    incoming.forEach(function(v,k){if(allowed.test(k))u.searchParams.set(k,v)});
+    a.href=u.href;
+  });
+})();
+</script>
+<noscript><img src="https://mc.yandex.ru/watch/110396040" style="position:absolute;left:-9999px" alt=""></noscript>
+<script id="nen-owner-swap">
+(function(){
+  if(location.hostname!=='n-e-n.ru'||!window.fetch)return;
+  fetch('/course/access-check/?course=firstyear',{credentials:'same-origin',cache:'no-store'}).then(function(r){
+    if(!r.ok)return;
+    document.querySelectorAll('a[href]').forEach(function(a){
+      var u=new URL(a.href);
+      if(u.hostname==='n-e-n.ru'&&u.pathname.replace(/\/$/,'')==='/course/firstyear/enroll'){
+        a.textContent='Открыть курс →';
+        a.href='/firstyear/main';
+      }
+    });
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>
